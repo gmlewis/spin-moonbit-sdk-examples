@@ -1,0 +1,6 @@
+{
+  "name" : "gmlewis/variables",
+  "deps" : {
+    "gmlewis/spin-moonbit-sdk" : "0.50.0"
+  }
+}
