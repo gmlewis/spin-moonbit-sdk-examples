@@ -1,0 +1,6 @@
+{
+  "name" : "gmlewis/now",
+  "deps" : {
+    "gmlewis/spin-moonbit-sdk" : "0.50.0"
+  }
+}
