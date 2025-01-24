@@ -9,7 +9,7 @@ pub fn handle(
   request : @types.IncomingRequest,
   response_out : @types.ResponseOutparam
 ) -> Unit {
-  let conn = match @redis.open(redis_address) {
+  let conn = match @redis.Connection::open(redis_address) {
     Ok(redis) => redis
     _ => return @util.respond_500(response_out)
   }
