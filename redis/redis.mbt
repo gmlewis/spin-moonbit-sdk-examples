@@ -3,7 +3,8 @@
 ///|
 let redis_address = "redis://localhost:6379/"
 
-///| `handle` handles a `GET /redis` request, sets a `test` key in Redis
+///|
+/// `handle` handles a `GET /redis` request, sets a `test` key in Redis
 /// then performs a `get` from Redis and returns the results.
 pub fn handle(
   request : @types.IncomingRequest,

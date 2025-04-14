@@ -6,7 +6,8 @@ let llm_model = "llama2-chat"
 ///|
 let default_prompt = "tell me a joke"
 
-///| `handle` handles a `GET /llm` request and responds with the answer
+///|
+/// `handle` handles a `GET /llm` request and responds with the answer
 /// to a fixed prompt. It also handles a `POST /llm` request and sends
 /// the body as a prompt to the LLM.
 pub fn handle(

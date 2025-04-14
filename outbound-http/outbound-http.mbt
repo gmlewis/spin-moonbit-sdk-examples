@@ -3,7 +3,8 @@
 ///|
 let url = "https://random-data-api.fermyon.app/physics/json"
 
-///| `handle` handles a `GET /outbound-http` request and makes an outbound
+///|
+/// `handle` handles a `GET /outbound-http` request and makes an outbound
 /// GET request to `url` and returns its JSON response. It also handles
 /// a `POST /md5sum` where the body is another URL to GET from. It will
 /// stream the response of that endpoint to its `response_out` and calculate
