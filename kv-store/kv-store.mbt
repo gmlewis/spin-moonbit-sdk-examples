@@ -26,7 +26,10 @@ pub fn handle(
 fn handle_get(store : @keyValue.Store, key : String) -> @types.OutgoingResponse {
   match store.get(key) {
     Ok(Some(value)) =>
-      @util.make_response(value, content_type=b"application/octet-stream")
+      @util.make_response(
+        Bytes::from_fixedarray(value),
+        content_type=b"application/octet-stream",
+      )
     _ => @util.make_404_response()
   }
 }
@@ -41,7 +44,7 @@ fn handle_post(
     Ok(body) => body
     _ => return @util.make_500_response()
   }
-  match store.set(key, value) {
+  match store.set(key, value.to_fixedarray()) {
     Ok(_) => @util.make_response(b"OK")
     _ => @util.make_404_response()
   }

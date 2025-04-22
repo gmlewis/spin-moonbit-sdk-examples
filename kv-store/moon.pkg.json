@@ -11,8 +11,8 @@
   },
   "import": [
     "gmlewis/spin-moonbit-sdk/gen",
-    "gmlewis/spin-moonbit-sdk/interface/imports/keyValue",
-    "gmlewis/spin-moonbit-sdk/interface/imports/wasi/http/types",
+    "gmlewis/spin-moonbit-sdk/interface/fermyon/spin/keyValue",
+    "gmlewis/spin-moonbit-sdk/interface/wasi/http/types",
     "gmlewis/spin-moonbit-sdk/util"
   ]
 }

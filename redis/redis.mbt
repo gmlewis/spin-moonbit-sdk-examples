@@ -24,12 +24,12 @@ pub fn handle(
 
 ///|
 fn handle_get(conn : @redis.Connection) -> @types.OutgoingResponse {
-  match conn.set("test", b"Hello, World!\n") {
+  match conn.set("test", b"Hello, World!\n".to_fixedarray()) {
     Ok(_) => ()
     _ => return @util.make_500_response()
   }
   match conn.get("test") {
-    Ok(Some(result)) => @util.make_response(result)
+    Ok(Some(result)) => @util.make_response(Bytes::from_fixedarray(result))
     _ => @util.make_404_response()
   }
 }

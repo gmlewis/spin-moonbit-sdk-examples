@@ -12,9 +12,9 @@
   "import": [
     "gmlewis/base64",
     "gmlewis/spin-moonbit-sdk/gen",
-    "gmlewis/spin-moonbit-sdk/interface/imports/llm",
-    "gmlewis/spin-moonbit-sdk/interface/imports/wasi/http/types",
-    "gmlewis/spin-moonbit-sdk/interface/imports/wasi/io/streams",
+    "gmlewis/spin-moonbit-sdk/interface/fermyon/spin/llm",
+    "gmlewis/spin-moonbit-sdk/interface/wasi/http/types",
+    "gmlewis/spin-moonbit-sdk/interface/wasi/io/streams",
     "gmlewis/spin-moonbit-sdk/util"
   ]
 }
