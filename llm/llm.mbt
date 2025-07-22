@@ -12,7 +12,7 @@ let default_prompt = "tell me a joke"
 /// the body as a prompt to the LLM.
 pub fn handle(
   request : @types.IncomingRequest,
-  response_out : @types.ResponseOutparam
+  response_out : @types.ResponseOutparam,
 ) -> Unit {
   let response = (match @util.split_path(request) {
       (@types.Get, ["llm"]) => prompt_llm(default_prompt)

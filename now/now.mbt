@@ -4,7 +4,7 @@
 /// `handle` returns the current number of seconds since Unix Epoch to any `GET /` request.
 pub fn handle(
   request : @types.IncomingRequest,
-  response_out : @types.ResponseOutparam
+  response_out : @types.ResponseOutparam,
 ) -> Unit {
   let response = (match request.path_with_query() {
       Some(_) => {

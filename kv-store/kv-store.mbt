@@ -7,7 +7,7 @@
 /// for later retrieval.
 pub fn handle(
   request : @types.IncomingRequest,
-  response_out : @types.ResponseOutparam
+  response_out : @types.ResponseOutparam,
 ) -> Unit {
   let store = match @keyValue.Store::open("default") {
     Ok(store) => store
@@ -38,7 +38,7 @@ fn handle_get(store : @keyValue.Store, key : String) -> @types.OutgoingResponse 
 fn handle_post(
   store : @keyValue.Store,
   key : String,
-  request : @types.IncomingRequest
+  request : @types.IncomingRequest,
 ) -> @types.OutgoingResponse {
   let value = match @util.get_body_bytes(request) {
     Ok(body) => body

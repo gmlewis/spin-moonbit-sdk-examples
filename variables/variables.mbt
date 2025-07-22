@@ -5,7 +5,7 @@
 /// in Spin variables associated with `:key` and returns the value or `404 Not Found`.
 pub fn handle(
   request : @types.IncomingRequest,
-  response_out : @types.ResponseOutparam
+  response_out : @types.ResponseOutparam,
 ) -> Unit {
   let response = (match @util.split_path(request) {
       (@types.Get, ["variables", key]) => handle_get(key)

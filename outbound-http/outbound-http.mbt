@@ -11,7 +11,7 @@ let url = "https://random-data-api.fermyon.app/physics/json"
 /// that stream's md5sum, reporting it to stderr when the stream ends.
 pub fn handle(
   request : @types.IncomingRequest,
-  response_out : @types.ResponseOutparam
+  response_out : @types.ResponseOutparam,
 ) -> Unit {
   let response = (match @util.split_path(request) {
       (@types.Get, ["outbound-http"]) => handle_get()
@@ -48,7 +48,7 @@ fn handle_get() -> @types.OutgoingResponse {
 fn consume(
   request : @types.IncomingRequest,
   response_out : @types.ResponseOutparam,
-  hash : &@common.HashFunc?
+  hash : &@common.HashFunc?,
 ) -> Unit {
   let url = match @util.get_body_bytes(request) {
     Ok(body) => @base64.bytes2str(body)
@@ -84,7 +84,7 @@ fn consume(
 fn stream(
   request : @types.IncomingRequest,
   response_out : @types.ResponseOutparam,
-  hash : &@common.HashFunc?
+  hash : &@common.HashFunc?,
 ) -> Unit {
   let url = match @util.get_body_bytes(request) {
     Ok(body) => @base64.bytes2str(body)

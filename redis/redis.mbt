@@ -8,7 +8,7 @@ let redis_address = "redis://localhost:6379/"
 /// then performs a `get` from Redis and returns the results.
 pub fn handle(
   request : @types.IncomingRequest,
-  response_out : @types.ResponseOutparam
+  response_out : @types.ResponseOutparam,
 ) -> Unit {
   let conn = match @redis.Connection::open(redis_address) {
     Ok(redis) => redis
