@@ -33,13 +33,16 @@ pub fn handle(
 
 ///|
 fn prompt_llm(prompt : String) -> @types.OutgoingResponse {
-  @util.println("prompting '\{llm_model}' with: '\{prompt}")
+  @util.println("prompting '\{llm_model}' with: '\{prompt}'")
   match @llm.infer(llm_model, prompt, None) {
     Ok(result) =>
       @util.make_response(
         @base64.str2bytes(result.to_string()),
         content_type=b"application/json",
       )
-    _ => @util.make_404_response()
+    e => {
+      @util.println("error prompting LLM: \{e}")
+      @util.make_404_response()
+    }
   }
 }

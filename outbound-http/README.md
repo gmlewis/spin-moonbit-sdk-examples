@@ -25,38 +25,38 @@ To test the `consume` and `stream` endpoints, start up a python server in
 another terminal window in the root directory of this repo:
 
 ```shell
-$ python3 -m http.server 8080
+$ cd .. && python3 -m http.server 8080
 ```
 
 Then use `curl` to test the endpoint:
 
 ```shell
-$ curl -X POST http://localhost:3000/consume -d 'http/localhost:8080/LICENSE'
+$ curl -X POST http://localhost:3000/consume -d 'http://localhost:8080/LICENSE'
 OK
 
 $ curl -X POST http://localhost:3000/consume?md5sum -d 'http://localhost:8080/LICENSE'
-86d3f3a95c324c9479bd8986968f4327
+f18f58e5cd844650215c76d1071a5b09
 
 $ curl -X POST http://localhost:3000/consume?sha256sum -d 'http://localhost:8080/LICENSE'
-c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+fea26e329e7dd773fbee25b903a6fcdd6a38d689f7983b62592cbd470a004450
 
 $ curl -X POST http://localhost:3000/stream -d 'http://localhost:8080/LICENSE' | wc
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 11386  100 11357  100    29  2555k   6682 --:--:-- --:--:-- --:--:-- 2779k
-     201    1581   11357
+100 11384  100 11355  100    29  2620k   6852 --:--:-- --:--:-- --:--:-- 2779k
+     201    1581   11355
 
 $ curl -X POST http://localhost:3000/stream?md5sum -d 'http://localhost:8080/LICENSE' | wc
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 11386  100 11357  100    29  2578k   6741 --:--:-- --:--:-- --:--:-- 2223k
-     201    1581   11357
+100 11384  100 11355  100    29  2082k   5444 --:--:-- --:--:-- --:--:-- 2223k
+     201    1581   11355
 
 $ curl -X POST http://localhost:3000/stream?sha256sum -d 'http://localhost:8080/LICENSE' | wc
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100 11386  100 11357  100    29  1388k   3629 --:--:-- --:--:-- --:--:-- 1588k
-     201    1581   11357
+100 11384  100 11355  100    29  1922k   5028 --:--:-- --:--:-- --:--:-- 2223k
+     201    1581   11355
 ```
 
 View the `spin` stderr output:
@@ -65,58 +65,13 @@ View the `spin` stderr output:
 Serving http://127.0.0.1:3000
 Available Routes:
   outbound-http: http://127.0.0.1:3000 (wildcard)
-
+...
 INFO: Performing GET 'http://localhost:8080/LICENSE'
 INFO: Status code = 200
-INFO: Header['server'] = 'SimpleHTTP/0.6 Python/3.9.6'
-INFO: Header['date'] = 'Sun, 18 Aug 2024 14:02:52 GMT'
+INFO: Header['server'] = 'SimpleHTTP/0.6 Python/3.13.5'
+INFO: Header['date'] = 'Sat, 02 Aug 2025 17:00:46 GMT'
 INFO: Header['content-type'] = 'application/octet-stream'
-INFO: Header['content-length'] = '11357'
-INFO: Header['last-modified'] = 'Tue, 04 Jun 2024 20:58:42 GMT'
-INFO: Consumed 11357 bytes from 'GET http://localhost:8080/LICENSE'
-
-INFO: Performing GET 'http://localhost:8080/LICENSE'
-INFO: Status code = 200
-INFO: Header['server'] = 'SimpleHTTP/0.6 Python/3.9.6'
-INFO: Header['date'] = 'Sun, 18 Aug 2024 14:03:01 GMT'
-INFO: Header['content-type'] = 'application/octet-stream'
-INFO: Header['content-length'] = '11357'
-INFO: Header['last-modified'] = 'Tue, 04 Jun 2024 20:58:42 GMT'
-INFO: Consumed 11357 bytes from 'GET http://localhost:8080/LICENSE', md5sum = 86d3f3a95c324c9479bd8986968f4327
-
-INFO: Performing GET 'http://localhost:8080/LICENSE'
-INFO: Status code = 200
-INFO: Header['server'] = 'SimpleHTTP/0.6 Python/3.9.6'
-INFO: Header['date'] = 'Sun, 18 Aug 2024 14:03:17 GMT'
-INFO: Header['content-type'] = 'application/octet-stream'
-INFO: Header['content-length'] = '11357'
-INFO: Header['last-modified'] = 'Tue, 04 Jun 2024 20:58:42 GMT'
-INFO: Consumed 11357 bytes from 'GET http://localhost:8080/LICENSE', sha256sum = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-
-INFO: Performing GET 'http://localhost:8080/LICENSE'
-INFO: Status code = 200
-INFO: Header['server'] = 'SimpleHTTP/0.6 Python/3.9.6'
-INFO: Header['date'] = 'Sun, 18 Aug 2024 14:03:35 GMT'
-INFO: Header['content-type'] = 'application/octet-stream'
-INFO: Header['content-length'] = '11357'
-INFO: Header['last-modified'] = 'Tue, 04 Jun 2024 20:58:42 GMT'
-INFO: Streamed 11357 bytes from 'GET http://localhost:8080/LICENSE'
-
-INFO: Performing GET 'http://localhost:8080/LICENSE'
-INFO: Status code = 200
-INFO: Header['server'] = 'SimpleHTTP/0.6 Python/3.9.6'
-INFO: Header['date'] = 'Sun, 18 Aug 2024 14:03:56 GMT'
-INFO: Header['content-type'] = 'application/octet-stream'
-INFO: Header['content-length'] = '11357'
-INFO: Header['last-modified'] = 'Tue, 04 Jun 2024 20:58:42 GMT'
-INFO: Streamed 11357 bytes from 'GET http://localhost:8080/LICENSE', md5sum = 86d3f3a95c324c9479bd8986968f4327
-
-INFO: Performing GET 'http://localhost:8080/LICENSE'
-INFO: Status code = 200
-INFO: Header['server'] = 'SimpleHTTP/0.6 Python/3.9.6'
-INFO: Header['date'] = 'Sun, 18 Aug 2024 14:04:04 GMT'
-INFO: Header['content-type'] = 'application/octet-stream'
-INFO: Header['content-length'] = '11357'
-INFO: Header['last-modified'] = 'Tue, 04 Jun 2024 20:58:42 GMT'
-INFO: Streamed 11357 bytes from 'GET http://localhost:8080/LICENSE', sha256sum = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+INFO: Header['content-length'] = '11355'
+INFO: Header['last-modified'] = 'Fri, 24 Jan 2025 02:55:57 GMT'
+INFO: Streamed 11355 bytes from 'GET http://localhost:8080/LICENSE', sha256sum = fea26e329e7dd773fbee25b903a6fcdd6a38d689f7983b62592cbd470a004450
 ```
