@@ -12,7 +12,7 @@ $ spin build --up
 The application can now receive requests at `http://localhost:3000/hello`:
 
 ```shell
-$ curl -i localhost:3000/hello                        
+$ curl -i localhost:3000/hello
 HTTP/1.1 200 OK
 content-type: text/plain
 transfer-encoding: chunked

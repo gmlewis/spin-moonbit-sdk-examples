@@ -1,7 +1,18 @@
-# spin-moonbit-sdk-examples
+# gmlewis/spin-moonbit-sdk-examples
+
 Examples for the experimental Spin SDK for the MoonBit programming language.
 
 Each directory contains a README with additional instructions. It is required to install dependencies via `moon install`.
+
+## Templates
+
+If you wish to install MoonBit templates for the [Spin CLI tool] (v3), you can run:
+
+```bash
+spin templates install --git https://github.com/gmlewis/spin-moonbit-sdk
+```
+
+The templates are located in the `templates` folder.
 
 ## Hints
 
