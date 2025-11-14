@@ -1,6 +1,6 @@
 {
   "name" : "gmlewis/redis",
   "deps" : {
-    "gmlewis/spin-moonbit-sdk" : "0.54.7"
+    "gmlewis/spin-moonbit-sdk" : "0.54.8"
   }
 }

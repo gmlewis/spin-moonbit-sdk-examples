@@ -25,7 +25,7 @@ fn handle_get(store : @keyValue.Store, key : String) -> @types.OutgoingResponse 
   match store.get(key) {
     Ok(Some(value)) =>
       @util.make_response(
-        Bytes::from_fixedarray(value),
+        Bytes::from_array(value),
         content_type=b"application/octet-stream",
       )
     _ => @util.make_404_response()
