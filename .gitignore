@@ -1,6 +1,8 @@
-.spin
-.mooncakes
-target
 .DS_Store
+_build/
+target
+.mooncakes/
+.moonagent/
+.spin/
 *.wasm
 *~
