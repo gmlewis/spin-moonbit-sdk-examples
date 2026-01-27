@@ -1,6 +1,7 @@
 {
-  "name" : "gmlewis/variables",
-  "deps" : {
-    "gmlewis/spin-moonbit-sdk" : "0.54.10"
+  "name": "gmlewis/variables",
+  "deps": {
+    "gmlewis/spin-moonbit-sdk": "0.54.11",
+    "gmlewis/base64": "0.16.1"
   }
 }

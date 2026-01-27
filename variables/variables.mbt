@@ -15,7 +15,7 @@ pub fn handle(
 
 ///|
 fn handle_get(key : String) -> @types.OutgoingResponse {
-  match @variables.get(key) {
+  match @spinvariables.get(key) {
     Ok(value) => @util.make_response(@base64.str2bytes(value))
     _ => @util.make_404_response()
   }

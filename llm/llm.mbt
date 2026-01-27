@@ -32,7 +32,7 @@ pub fn handle(
 ///|
 fn prompt_llm(prompt : String) -> @types.OutgoingResponse {
   @util.println("prompting '\{llm_model}' with: '\{prompt}'")
-  match @llm.infer(llm_model, prompt, None) {
+  match @spinllm.infer(llm_model, prompt, None) {
     Ok(result) =>
       @util.make_response(
         @base64.str2bytes(result.to_string()),

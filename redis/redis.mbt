@@ -8,7 +8,7 @@ pub fn handle(
   request : @types.IncomingRequest,
   response_out : @types.ResponseOutparam,
 ) -> Unit {
-  let conn = match @redis.Connection::open(redis_address) {
+  let conn = match @spinredis.Connection::open(redis_address) {
     Ok(redis) => redis
     _ => return @util.respond_500(response_out)
   }
@@ -21,7 +21,7 @@ pub fn handle(
 }
 
 ///|
-fn handle_get(conn : @redis.Connection) -> @types.OutgoingResponse {
+fn handle_get(conn : @spinredis.Connection) -> @types.OutgoingResponse {
   match conn.set("test", b"Hello, World!\n".to_fixedarray()) {
     Ok(_) => ()
     _ => return @util.make_500_response()
