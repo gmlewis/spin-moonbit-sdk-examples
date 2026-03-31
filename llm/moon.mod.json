@@ -2,6 +2,6 @@
   "name": "gmlewis/llm",
   "deps": {
     "gmlewis/base64": "0.16.1",
-    "gmlewis/spin-moonbit-sdk": "0.54.13"
+    "gmlewis/spin-moonbit-sdk": "0.54.14"
   }
 }
