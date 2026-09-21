@@ -15,8 +15,8 @@ source = "hello-world.wasm"
 
 [component.hello.build]
 command = """\
-  moon build --target wasm && \
-  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./target/wasm/release/build/hello-world.wasm -o hello-world.wasm --encoding utf16 -w http-trigger && \
+  moon build --target wasm --release && \
+  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./_build/wasm/release/build/hello-world.wasm -o hello-world.wasm --encoding utf16 -w http-trigger && \
   wasm-tools component new hello-world.wasm -o hello-world.wasm
   """
-watch = ["**/*.mbt"]
+watch = ["**/*.mbt", "moon.mod", "moon.pkg"]

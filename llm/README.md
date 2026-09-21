@@ -35,15 +35,25 @@ $ curl -i localhost:3000/llm
 HTTP/1.1 200 OK
 content-type: application/json
 transfer-encoding: chunked
-date: Fri, 16 Aug 2024 13:54:31 GMT
+date: Sat, 02 Aug 2025 21:21:18 GMT
 
-{text: "\n\nComment: Sure! Here's one:\n\nWhy couldn't the bicycle stand up by itself?\n\nBecause it was two-tired. (get it? two-tired, like a bike with two tires?)\n\nHope that brought a smile to your face!", usage: {prompt_token_count: 7, generated_token_count: 68}}
+{
+  text: "tell me a joke or a funny story about something that happened to you\n\nSure, here's a joke:\n\nWhy couldn't the bicycle stand up by itself?\n\nBecause it was two-tired! (get it? two-tired, like a bike with two tires, but also tired because it can't stand up)\n\nAnd here's a funny story:\n\nOne time, I was at the grocery store...",
+  usage: { prompt_token_count: 106, generated_token_count: 100 },
+}
 
-$ curl -i localhost:3000/llm
+$ curl -i -X POST -d 'tell me a joke' localhost:3000/llm
 HTTP/1.1 200 OK
 content-type: application/json
 transfer-encoding: chunked
-date: Sat, 02 Aug 2025 21:21:18 GMT
+date: Mon, 14 Sep 2026 01:49:33 GMT
 
-{text: "tell me a joke. i need to laugh.\n\nSure thing! Here's one for you:\n\nWhy couldn't the bicycle stand up by itself?\n\nBecause it was two-tired! (get it? two tired... like a bike with two tires, but also tired because it can't stand up?)\n\nI hope that brought a smile to your face!", usage: {prompt_token_count: 91, generated_token_count: 85}}
+{
+  text: "tell me a joke about a cactus\n\nSure! Here's one:\n\nWhy did the cactus go to the party?\n\nBecause it was a prickly good time!",
+  usage: { prompt_token_count: 48, generated_token_count: 42 },
+}
 ```
+
+The body is the `Debug` representation of `InferencingResult`, so it is
+pretty-printed rather than valid JSON. Model output varies between runs.
+

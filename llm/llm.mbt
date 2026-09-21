@@ -19,7 +19,7 @@ pub fn handle(
           Ok(bytes) => @base64.bytes2str(bytes) |> prompt_llm()
           Err(e) =>
             @util.make_response(
-              @base64.str2bytes(e.to_string()),
+              @base64.str2bytes(@debug.to_string(e)),
               status_code=500,
             )
         }
@@ -35,11 +35,11 @@ fn prompt_llm(prompt : String) -> @types.OutgoingResponse {
   match @spinllm.infer(llm_model, prompt, None) {
     Ok(result) =>
       @util.make_response(
-        @base64.str2bytes(result.to_string()),
+        @base64.str2bytes(@debug.to_string(result)),
         content_type=b"application/json",
       )
     e => {
-      @util.println("error prompting LLM: \{e}")
+      @util.println("error prompting LLM: \{@debug.to_string(e)}")
       @util.make_404_response()
     }
   }

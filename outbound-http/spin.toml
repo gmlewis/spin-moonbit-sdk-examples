@@ -16,8 +16,8 @@ allowed_outbound_hosts = ["*://*:*"]
 
 [component.outbound-http.build]
 command = """\
-  moon build --target wasm && \
-  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./target/wasm/release/build/outbound-http.wasm -o outbound-http.wasm --encoding utf16 -w http-trigger && \
+  moon build --target wasm --release && \
+  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./_build/wasm/release/build/outbound-http.wasm -o outbound-http.wasm --encoding utf16 -w http-trigger && \
   wasm-tools component new outbound-http.wasm -o outbound-http.wasm
   """
-watch = ["**/*.mbt"]
+watch = ["**/*.mbt", "moon.mod", "moon.pkg"]

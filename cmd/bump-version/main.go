@@ -15,12 +15,12 @@ import (
 )
 
 const (
-	sdkVerRelPath = "../moonbit-10-spin-sdk/moon.mod.json"
+	sdkVerRelPath = "../moonbit-10-spin-sdk/moon.mod"
 )
 
 var (
-	versionRE = regexp.MustCompile(`(?ms)^\s*"version": "(.*?)",?$`)
-	newVerRE  = regexp.MustCompile(`(?ms)^\s*"gmlewis/spin-moonbit-sdk"\s*: "(.*?)",?$`)
+	versionRE = regexp.MustCompile(`(?m)^version = "(.*?)"$`)
+	newVerRE  = regexp.MustCompile(`(?m)^\s*"gmlewis/spin-moonbit-sdk@(.*?)",?$`)
 )
 
 func main() {
@@ -46,6 +46,7 @@ var skipDirs = map[string]bool{
 	".mooncakes": true,
 	".spin":      true,
 	"target":     true,
+	"_build":     true,
 }
 
 func processFiles(baseDir, newVersion string) {
@@ -58,7 +59,7 @@ func processFiles(baseDir, newVersion string) {
 		if skipDirs[baseName] {
 			return fs.SkipDir
 		}
-		if baseName != "moon.mod.json" {
+		if baseName != "moon.mod" {
 			return nil
 		}
 		processFile(filepath.Join(baseDir, path), newVersion)

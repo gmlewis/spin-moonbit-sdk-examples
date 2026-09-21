@@ -16,8 +16,8 @@ allowed_outbound_hosts = ["redis://*:*"]
 
 [component.redis.build]
 command = """\
-  moon build --target wasm && \
-  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./target/wasm/release/build/redis.wasm -o redis.wasm --encoding utf16 -w http-trigger && \
+  moon build --target wasm --release && \
+  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./_build/wasm/release/build/redis.wasm -o redis.wasm --encoding utf16 -w http-trigger && \
   wasm-tools component new redis.wasm -o redis.wasm
   """
-watch = ["**/*.mbt"]
+watch = ["**/*.mbt", "moon.mod", "moon.pkg"]

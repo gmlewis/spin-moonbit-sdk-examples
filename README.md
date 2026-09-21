@@ -2,7 +2,10 @@
 
 Examples for the experimental Spin SDK for the MoonBit programming language.
 
-Each directory contains a README with additional instructions. It is required to install dependencies via `moon install`.
+Each directory contains a README with additional instructions. Dependencies are
+fetched automatically by `moon build`; run `moon update` to refresh them, and
+`bump-version.sh` to move every example to the latest published
+`spin-moonbit-sdk`.
 
 ## Templates
 
@@ -23,14 +26,16 @@ Hence the build command in the `spin.toml` files looks like this:
 ```toml
 [component.hello.build]
 command = """\
-  moon build --target wasm && \
-  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./target/wasm/release/build/hello-world.wasm -o hello-world.wasm --encoding utf16 -w http-trigger && \
+  moon build --target wasm --release && \
+  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./_build/wasm/release/build/hello-world.wasm -o hello-world.wasm --encoding utf16 -w http-trigger && \
   wasm-tools component new hello-world.wasm -o hello-world.wasm
   """
-watch = ["**/*.mbt"]
+watch = ["**/*.mbt", "moon.mod", "moon.pkg"]
 ```
 
-The wit directory is referenced from the .mooncake directory.
+The wit directory is referenced from the .mooncakes directory, and `moon`
+writes release artifacts to `_build/wasm/release/build/<name>.wasm`, so
+`--release` must be passed explicitly.
 
 ## Status
 
@@ -38,8 +43,8 @@ The code has been updated to support compiler:
 
 ```bash
 $ moon version --all
-moon 0.1.20260330 (c527f57 2026-03-30) ~/.moon/bin/moon
-moonc v0.8.4+4d98d95d4 (2026-03-30) ~/.moon/bin/moonc
-moonrun 0.1.20260330 (c527f57 2026-03-30) ~/.moon/bin/moonrun
-moon-pilot 0.0.1-df92511 (2026-03-30) ~/.moon/bin/moon-pilot
+moon 0.1.20260920 (914d7da 2026-09-20) ~/.moon/bin/moon
+moonc v0.10.14+7d59c7ec9 (2026-09-18) ~/.moon/bin/moonc
+moonrun 0.1.20260920 (914d7da 2026-09-20) ~/.moon/bin/moonrun
+
 ```

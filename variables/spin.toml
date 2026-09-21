@@ -18,11 +18,11 @@ source = "variables.wasm"
 
 [component.variables.build]
 command = """\
-  moon build --target wasm && \
-  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./target/wasm/release/build/variables.wasm -o variables.wasm --encoding utf16 -w http-trigger && \
+  moon build --target wasm --release && \
+  wasm-tools component embed .mooncakes/gmlewis/spin-moonbit-sdk/wit ./_build/wasm/release/build/variables.wasm -o variables.wasm --encoding utf16 -w http-trigger && \
   wasm-tools component new variables.wasm -o variables.wasm
   """
-watch = ["**/*.mbt"]
+watch = ["**/*.mbt", "moon.mod", "moon.pkg"]
 
 [component.variables.variables]
 secret_var_name = "{{ secret_var_name }}"

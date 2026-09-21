@@ -1,0 +1,21 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "gmlewis/outbound-http"
+
+import {
+  "gmlewis/spin-moonbit-sdk/interface/wasi/http/types",
+}
+
+// Values
+pub fn cabi_realloc(Int, Int, Int, Int) -> Int
+
+pub fn handle(@types.IncomingRequest, @types.ResponseOutparam) -> Unit
+
+pub fn wasmExportHandle(Int, Int) -> Unit
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

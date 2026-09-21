@@ -6,3 +6,4 @@ target
 .spin/
 *.wasm
 *~
+/.github/skills

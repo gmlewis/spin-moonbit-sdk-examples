@@ -36,7 +36,7 @@ fn handle_get() -> @types.OutgoingResponse {
   match @util.send_request(req) {
     Ok(result) => @util.make_response(result, content_type=b"application/json")
     Err(e) => {
-      let msg = @base64.str2bytes(e.to_string())
+      let msg = @base64.str2bytes(@debug.to_string(e))
       @util.make_response(msg, status_code=500)
     }
   }
@@ -57,7 +57,7 @@ fn consume(
   let (num_bytes, hash_sum) = match @util.consume(req, hash, debug=true) {
     Ok(t) => t
     Err(e) => {
-      let err = e.to_string()
+      let err = @debug.to_string(e)
       @log.error(err)
       let msg = @base64.str2bytes(err)
       return response_out.set(@util.make_response(msg, status_code=500) |> Ok)
@@ -94,7 +94,7 @@ fn stream(
     @util.stream(req, response_out, hash, debug=true) {
     Ok(t) => t
     Err(e) => {
-      let err = e.to_string()
+      let err = @debug.to_string(e)
       @log.error(err)
       let msg = @base64.str2bytes(err)
       return response_out.set(@util.make_response(msg, status_code=500) |> Ok)
