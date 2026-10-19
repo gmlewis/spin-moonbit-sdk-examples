@@ -6,11 +6,11 @@ import {
 }
 
 // Values
-pub fn cabi_realloc(Int, Int, Int, Int) -> Int
+pub fn cabi_realloc(Int32, Int32, Int32, Int32) -> Int32
 
 pub fn handle(@types.IncomingRequest, @types.ResponseOutparam) -> Unit
 
-pub fn wasmExportHandle(Int, Int) -> Unit
+pub fn wasmExportHandle(Int32, Int32) -> Unit
 
 // Errors
 
